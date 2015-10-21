@@ -7,10 +7,15 @@
 //
 
 #import "ViewController.h"
+#import "JokeGenerator.h"
 
 @interface ViewController ()
 
+@property (nonatomic, strong) JokeGenerator *generator;
+@property (weak, nonatomic) IBOutlet UILabel *jokeLabel;
+
 @end
+
 
 @implementation ViewController
 
@@ -22,6 +27,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (JokeGenerator *)generator {
+    if (!_generator) {
+        _generator = [[JokeGenerator alloc] init];
+    }
+    return _generator;
+}
+
+- (IBAction)buttonTapped:(id)sender {
+    self.jokeLabel.text = [self.generator randomJoke];
 }
 
 @end

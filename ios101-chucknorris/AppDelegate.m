@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "JokeGenerator.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    JokeGenerator *generator = [[JokeGenerator alloc] init];
+    for (int i = 0; i < 3; ++i) {
+        NSString *joke = [generator randomJoke];
+        NSLog(@"Random Joke %d: %@", i, joke);
+    }
+    
     return YES;
 }
 
